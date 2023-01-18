@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+<div class="exchange-box">
+    <div class="dropdown">
+        <button class="dropbtn" id="from-button" style="color:black"></button>
+        <div class="dropdown-content" id="from-currnecy-list">
+          <a href="#">USD</a>
+          <a href="#">KRW</a>
+          <a href="#">VND</a>
+        </div>
+      </div>
+      <div class="input-box">
+         <!-- onkeyup => 키를 누르고 올라가는 순간 이벤트가 생기는것 **/ -->
+          <input type="number" id="from-input" onkeyup="convert()" placeholder="금액을입력하세요"/>
+          <input type="text" id="from-currency"/>
+
+      </div>
+</div>
+<h1>=</h1>
+<div class="exchange-box">
+    <div class="dropdown">
+        <button class="dropbtn" id="to-button" style="color:black">통화</button>
+        <div class="dropdown-content" id="to-currecny-list">
+          <a href="#">USD</a>
+          <a href="#">KRW</a>
+          <a href="#">VND</a>
+        </div>
+      </div>
+      <div class="input-box">
+          <input type="number" id="to-input" onkeyup="ToConvert()"/>
+          <input type="text" id="to-currency"/>
+
+      </div>
+</div>
+    <script src="main.js"></script>
+</body>
+</html>
