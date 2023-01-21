@@ -39,8 +39,8 @@ let currencyRatio={
     }
 }
 
-
-
+var unitWords=["","만","억","조","경"];
+var splitUnit=10000;
 
 let toCurrency="USD"
 let selectCurrency="USD"
@@ -110,30 +110,39 @@ function convert(){
 
     // 내가 인풋창에 있는것을 가져오고 싶을때는 .value를 써주어야함
     let amount=document.getElementById("from-input").value
-    console.log("바꿀돈은"+amount+"입니다")
+    commaAmount=amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    console.log("바꿀돈은"+commaAmount+"입니다")
     console.log(selectCurrency+"가가"+toCurrency)
     let convertedAmount=amount * currencyRatio[selectCurrency][toCurrency]
     console.log("환전결과"+convertedAmount)
-
-
+    let withComma1=convertedAmount.toLocaleString();
+    console.log(withComma1);
     //3. 환전된 값을 보이게 . convertamount를 아래칸 인풋에 표출
     document.getElementById("to-input").value=convertedAmount
-    document.getElementById("from-currency").value=currencyRatio[selectCurrency]['unit']
-    document.getElementById("to-currency").value=currencyRatio[toCurrency]['unit']
+    document.getElementById("from-currency").value=commaAmount+currencyRatio[selectCurrency]['unit']
+    document.getElementById("to-currency").value=withComma1+currencyRatio[toCurrency]['unit']
 
 }
 function ToConvert(){
 
     let ToAmount=document.getElementById("to-input").value;
     console.log(ToAmount);
+    commaToAmount=ToAmount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    console.log("!@#@!@"+commaToAmount)
     let convertedAmount1=ToAmount * currencyRatio[toCurrency][selectCurrency]
     console.log("환전결과 입니다"+convertedAmount1);
     document.getElementById("from-input").value=convertedAmount1;
-    document.getElementById("from-currency").value=currencyRatio[selectCurrency]['unit']
-    document.getElementById("to-currency").value=currencyRatio[toCurrency]['unit']
+    let withComma=convertedAmount1.toLocaleString();
+    document.getElementById("from-currency").value=withComma+currencyRatio[selectCurrency]['unit']
+    document.getElementById("to-currency").value=commaToAmount+currencyRatio[toCurrency]['unit']
+
+
+}
 
 
 
 
-} 
+
+
+
 
